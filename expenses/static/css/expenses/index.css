@@ -1,0 +1,216 @@
+
+
+
+        /* Main container styling */
+        .container-fluid {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Sidebar and main content layout */
+        .row {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Main content card styling */
+        .main-content {
+            margin-top: -250px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Breadcrumb styling */
+        .breadcrumb {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 10px 15px;
+            font-size: 14px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .breadcrumb a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .breadcrumb-item.active {
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+        /* Add expenses button styling */
+        .btn-add-expense {
+            background-color: #28a745;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .btn-add-expense:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .btn-add-expense:focus {
+            outline: none;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+        }
+
+        /* Improve overall text and spacing */
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #343a40;
+        }
+
+        .content-description {
+            font-size: 16px;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        /* Table styling */
+        .container table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table-striped {
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-striped thead {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .table-striped th,
+        .table-striped td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-striped tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .table-striped tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .table-hover {
+            cursor: pointer;
+        }
+
+        th {
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 14px;
+            color: #343a40;
+        }
+
+        /* Search Form Styling */
+.search-form {
+    margin-right: 15px;
+}
+
+.search-form .input-group {
+    max-width: 300px;
+}
+
+.search-form .form-control {
+    border-radius: 5px 0 0 5px;
+    border-right: none;
+    padding: 8px;
+}
+
+.search-form .btn {
+    border-radius: 0 5px 5px 0;
+}
+
+/* Add Expense Button Styling */
+.btn-add-expense {
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-add-expense:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Align content properly */
+.d-flex.align-items-center {
+    gap: 10px;
+}
+
+/* Breadcrumb margin adjustment */
+.breadcrumb {
+    margin-bottom: 20px;
+}
+/* Reduce label size for the charts */
+.chartjs-render-monitor {
+    font-size: 10px !important;
+}
+
+/* Customize the chart axis labels and title */
+.chartjs-axis-labels {
+    font-size: 8px !important;
+}
+
+/* Make the chart canvas smaller */
+#chartCanvas {
+    max-width: 100%;
+    max-height: 300px; /* Adjust height to your desired size */
+}
+
+/* Optionally adjust button size */
+.btn-group button {
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+/* Adjust breadcrumb font size */
+.breadcrumb {
+    font-size: 12px;
+}
+
+/* Optionally adjust other text sizes */
+.content-description {
+    font-size: 14px;
+}
+
+.user-info {
+    color: #f8f9fa; /* A brighter, almost white color */
+    font-weight: bold; /* Make the text stand out more */
+    font-size: 14px; /* Adjust font size if needed */
+}
+
+.user-info i {
+    margin-right: 8px; /* Add some space between the icon and text */
+}
+
+

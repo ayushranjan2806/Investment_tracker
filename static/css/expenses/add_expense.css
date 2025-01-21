@@ -1,0 +1,64 @@
+
+    /* Card Header Styling */
+    .card-header {
+        background: linear-gradient(135deg, #ff6a00, #ee0979); /* Vibrant gradient */
+        font-size: 30px;
+        font-weight: 700;
+        color: #fff;
+        text-transform: uppercase;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow behind text */
+        padding: 30px 15px;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .card-header:hover {
+        background: linear-gradient(135deg, #ff0979, #ff6a00); /* Reverse gradient on hover */
+        cursor: pointer;
+        transform: scale(1.05); /* Slight enlargement on hover */
+    }
+
+    /* Submit Button Styling to Match Header */
+    .btn-primary {
+        background: linear-gradient(135deg, #ff6a00, #ee0979); /* Matching vibrant gradient */
+        border: none; /* Remove border */
+        padding: 12px 20px;
+        font-size: 16px;
+        font-weight: 700;
+        border-radius: 8px;
+        width: 100%;
+        margin-top: 15px;
+        color: #fff; /* White text */
+        text-transform: uppercase; /* Uppercase text */
+        letter-spacing: 2px; /* Spacing between letters */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow behind text */
+        transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #ff0979, #ff6a00); /* Reverse gradient on hover */
+        transform: scale(1.05); /* Slight enlargement on hover */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow when hovered */
+        cursor: pointer;
+    }
+
+    .btn-primary:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+    }
+
+    .btn-primary:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+    }
+
+    /* Adjust padding and font size for mobile responsiveness */
+    @media (max-width: 768px) {
+        .btn-primary {
+            font-size: 14px;
+            padding: 10px 18px;
+        }
+    }
+

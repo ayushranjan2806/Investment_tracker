@@ -1,0 +1,85 @@
+{% extends 'basic.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Display messages above the content -->
+    {% include 'partial/messages.html' %}
+
+    <div class="row">
+        <!-- Sidebar -->
+        <!-- You can add your sidebar content here if needed -->
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" style="margin-top: -350px;">
+
+            <h1 class="mt-4">Preferred Currency</h1>
+
+            <p class="mb-4">Select your preferred currency from the dropdown below and save your preference:</p>
+
+            <!-- Form to select currency -->
+            <form action="{% url 'preference' %}" method="post">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                    <label for="currency" class="form-label"><strong>Choose Currency</strong></label>
+                    <select class="form-control" id="currency" name="currency">
+                        <!-- Placeholder option for when no preference exists -->
+                        {% if not user_preferences %}
+                            <option selected disabled>Choose your currency...</option>
+                        {% endif %}
+
+                        <!-- Pre-select the user's current preference if available -->
+                        {% for currency in currencies %}
+                            {% if user_preferences and currency.name in user_preferences.currency %}
+                                <option selected value="{{ currency.name }} - {{ currency.value }}">
+                                    {{ currency.name }} - {{ currency.value }}
+                                </option>
+                            {% else %}
+                                <option value="{{ currency.name }} - {{ currency.value }}">
+                                    {{ currency.name }} - {{ currency.value }}
+                                </option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Save Button -->
+                <button type="submit" class="btn btn-primary mt-2 custom-btn">Save Preference</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+{% block extra_css %}
+<style>
+    /* Custom CSS for the Save button */
+    .custom-btn {
+        background-color: #007bff; /* Blue background */
+        border: 2px solid #007bff; /* Blue border */
+        padding: 10px 20px; /* Padding around the button */
+        font-size: 16px; /* Larger font size */
+        transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition on hover */
+    }
+
+    .custom-btn:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+        border-color: #004085; /* Darker blue border on hover */
+    }
+
+    .custom-btn:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5); /* Focus effect */
+    }
+
+    .form-label {
+        font-size: 1.1rem;
+        color: #495057; /* Slightly darker label text for better visibility */
+    }
+
+    .form-control {
+        font-size: 1rem;
+        padding: 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% endblock %}

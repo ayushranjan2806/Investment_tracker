@@ -1,0 +1,99 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+    
+<div class="row">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content" style="margin-top: -330px">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'expenses' %}">Expenses</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Add Expenses</li>
+            </ol>
+        </nav>
+
+        <div class="card stylish-card">
+            <div class="card-header text-white text-center">
+                <h4 class="mb-0">Add New Expense</h4>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'add_expense' %}" method="post">
+                    {% include 'partial/messages.html' %}
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input
+                            type="number"
+                            id="amount"
+                            class="form-control stylish-input"
+                            name="amount"
+                            placeholder="Enter amount"
+                            min="0"
+                            step="0.01"
+                            value="{{values.amount}}"
+                            required
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea
+                            id="description"
+                            class="form-control stylish-input"
+                            name="description"
+                            placeholder="Enter a brief description"
+                            rows="3"
+                            required
+                        >{{values.description}}</textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" class="form-control stylish-input" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            {% for category in categories %}
+                                <option value="{{ category.name }}" {% if values.category == category.name %}selected{% endif %}>
+                                    {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="expense_date" class="form-label">Date of Expense</label>
+                        <input
+                            type="text"
+                            id="expense_date"
+                            class="form-control stylish-input"
+                            name="expense_date"
+                            value="{{values.expense_date|default_if_none:''}}"
+                            required
+                            placeholder="Select Date"
+                        />
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block stylish-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Include Flatpickr CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    // Initialize Flatpickr on the expense_date input field
+    flatpickr("#expense_date", {
+        dateFormat: "Y-m-d", // Format the date (e.g., YYYY-MM-DD)
+        minDate: "2024-12-31", // Disable past dates
+        maxDate: "2027-12-31", // Set a maximum date
+        locale: "en", // Language
+        theme: "material_blue", // Flatpickr theme (optional)
+    });
+</script>
+
+{#add css link#}
+    <link href="{% static 'css/expenses/add_expense.css' %}" rel="stylesheet">
+
+
+{% endblock %}

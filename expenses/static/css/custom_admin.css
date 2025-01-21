@@ -1,0 +1,14 @@
+#head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#head img {
+  border-radius: 50%;
+}
+
+#head span {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}

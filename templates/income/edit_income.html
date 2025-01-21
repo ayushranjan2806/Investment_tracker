@@ -1,0 +1,146 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content" style="margin-top: -330px;">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{% url 'expenses' %}">Income</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Edit Income</li>
+            </ol>
+        </nav>
+
+        <div class="card stylish-card shadow">
+            <div class="card-header text-white text-center stylish-card-header">
+                <h4 class="mb-0">Edit Your Income</h4>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'edit_income' income.id %}" method="post">
+                    {% include 'partial/messages.html' %}
+                    {% csrf_token %}
+                    <div class="form-group mb-3">
+                        <label for="amount" class="form-label">Amount</label>
+                        <input
+                            type="number"
+                            id="amount"
+                            class="form-control stylish-input"
+                            name="amount"
+                            placeholder="Enter amount"
+                            min="0"
+                            step="0.01"
+                            value="{{ income.amount }}"
+                            required
+                        />
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea
+                            id="description"
+                            class="form-control stylish-input"
+                            name="description"
+                            placeholder="Enter a brief description"
+                            rows="3"
+                            required
+                        >{{ income.description }}</textarea>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="source" class="form-label">Source</label>
+                        <select id="source" class="form-control stylish-input" name="source" required>
+                            <option value="" disabled>Select  Income source </option>
+                            {% for sourc in source %}
+                                <option value="{{ sourc.name }}" {% if sourc.category == sourc.name %}selected{% endif %}>
+                                    {{ sourc.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="expense_date" class="form-label">Date of Expense</label>
+                        <input
+                            type="text"
+                            id="expense_date"
+                            class="form-control stylish-input"
+                            name="expense_date"
+                            value="{{ values.date | date:'Y-m-d' }}"
+                            required
+                            placeholder="Select Date"
+                        />
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="d-flex justify-content-center gap-4 mt-4">
+                        <!-- Cancel Button -->
+                        <a href="{% url 'expenses' %}" class="btn btn-outline-secondary btn-lg stylish-btn px-4">Cancel</a>
+                        
+                        <!-- Delete Button (Modal Trigger) -->
+                    <!-- Delete Button with Alert -->
+<!-- Delete Button with Alert -->
+<!-- Delete Link with Alert -->
+        <a href="{% url 'income_delete' income.id %}" class="btn btn-danger btn-lg stylish-btn px-4" onclick="return confirmDelete()">Delete</a>#}
+
+        <!-- JavaScript for Delete Confirmation Alert -->
+        <script>
+            function confirmDelete() {
+                // Show confirmation alert
+                return confirm("Are you sure you want to delete this expense? This action cannot be undone.");
+            }
+        </script>
+
+
+  
+                        <!-- Save Button -->
+                        <button type="submit" class="btn btn-primary btn-lg stylish-btn px-4">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title stylish-card-header" id="deleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this expense? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary stylish-btn" data-bs-dismiss="modal">Cancel</button>
+{#                <form action="{% url 'expense_delete' expense.id %}" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    <button type="submit" class="btn btn-danger stylish-btn">Delete</button>#}
+{#                </form>#}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Flatpickr CSS and JS -->
+<link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    // Initialize Flatpickr on the expense_date input field
+    flatpickr("#expense_date", {
+        dateFormat: "Y-m-d", // Format the date (e.g., YYYY-MM-DD)
+        minDate: "2024-12-31", // Disable past dates
+        maxDate: "2027-12-31", // Set a maximum date
+        locale: "en", // Language
+        theme: "material_blue", // Flatpickr theme (optional)
+    });
+</script>
+
+<!-- Include custom CSS -->
+ 
+
+    
+<link href="{% static 'css/expenses/edit_expense.css' %}" rel="stylesheet">
+
+{% endblock %}

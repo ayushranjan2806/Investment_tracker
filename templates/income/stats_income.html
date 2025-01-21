@@ -1,0 +1,61 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <aside class="col-md-3">
+            <!-- Optional Sidebar Content -->
+        </aside>
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content" style="margin-top: -355px">
+            {% include 'partial/messages.html' %}
+
+            <!-- Top Section -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1>Income Summary</h1>
+                    <p class="content-description">View and analyze your income sources summary.</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a href="{% url 'income' %}" class="btn btn-primary">BACK</a>
+                </div>
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{% url 'income' %}">Income</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Summary</li>
+                </ol>
+            </nav>
+
+            <!-- Toggle Buttons -->
+            <div class="btn-group mb-7" role="group" aria-label="Chart Toggle">
+                <button id="toggleDonut" class="btn btn-outline-primary active">Donut Chart</button>
+                <button id="toggleLine" class="btn btn-outline-primary">Line Chart</button>
+                <button id="toggleBar" class="btn btn-outline-primary">Bar Chart</button>
+            </div>
+
+            <!-- Chart Section -->
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <canvas id="chartCanvas" width="400" height="400"></canvas>
+                </div>
+                <div class="col-md-4">
+                    <!-- Optional additional content or statistics -->
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Static Assets -->
+  <!-- Update for income-specific styles -->
+    <link href="{% static 'css/expenses/stats.css' %}" rel="stylesheet">
+<script src="{% static 'js/stats_income_source.js' %}"></script>  <!-- Update to the income stats JS -->
+
+{% endblock %}

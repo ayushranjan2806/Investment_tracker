@@ -1,0 +1,128 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+
+        <!-- Main Content -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main-content" style="margin-top: -380px">
+            {% include 'partial/messages.html' %}
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1>My Income</h1>
+                    <p class="content-description">Manage your Income efficiently </p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <!-- Search Input -->
+                    <div class="input-group me-3">
+                        <input
+                            type="text"
+                            class="form-control"
+                            placeholder="Search Income..."
+                            id="search-field"
+                            value="" /> <!-- Optional: keeps search term in input on page reload -->
+                       
+                    </div>
+                    <a href="{% url 'add_income' %}" class="btn btn-primary btn-add-expense">Add Income</a>
+                </div>
+            </div>
+
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="#">Income</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        My Income
+                    </li>
+                </ol>
+            </nav>
+
+            <div id="default-table" >
+                {% if income.count > 0 %}
+                <div class="container">
+                    <table class="table-striped table-hover app-table">
+                        <thead>
+                            <tr>
+                                <th>Amount ({{ currency }})</th>
+                                <th>source</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for income in page_obj %}
+                            <tr>
+                                <td>{{ income.amount }}</td>
+                                <td>{{ income.source }}</td>
+                                <td>{{ income.description }}</td>
+                                <td>{{ income.date }}</td>
+                                <td>
+                                    <a href="{% url 'edit_income' income.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <!-- Pagination Controls -->
+                    <div class="pagination-container">
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ request.GET.q }}">Previous</a>
+                                </li>
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                                    <a class="page-link" href="?page={{ num }}&q={{ request.GET.q }}">{{ num }}</a>
+                                </li>
+                                {% endfor %}
+
+                                {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ request.GET.q }}">Next</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+
+                        <div class="mt-2 text-center">
+                            Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <p>No Income list found. Start adding your Income list!</p>
+                {% endif %}
+            </div>
+
+            <!-- AJAX Search Results Table -->
+            <div id="search-table" class="container">
+                <table class="table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Amount (currency)</th>
+                            <th>Source</th>
+                            <th>Description</th>
+                            <th>Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="search-results">
+                        <!-- Results will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<link href="{% static 'css/expenses/index.css' %}" rel="stylesheet">
+<script src="{% static 'js/searchincomes.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+.search-container {
+    background-color: #343a40; /* Dark background for a sleek look */
+    padding: 10px 15px; /* Add some padding */
+    border-radius: 8px; /* Slightly rounded corners */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-container input[type="search"] {
+    border: 1px solid #ced4da; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 8px 12px; /* Internal spacing for the input */
+    font-weight: bold;
+    color: #495057; /* Text color */
+    background-color: #f8f9fa; /* Light background */
+    flex: 1; /* Makes the input expand */
+  }
+
+  .search-container input[type="search"]::placeholder {
+    color: #6c757d; /* Subtle placeholder color */
+    font-style: italic; /* Italicized placeholder */
+  }
+
+  .search-container button {
+    padding: 8px 16px; /* Comfortable button size */
+    font-size: 14px;
+    border: 1px solid #fff; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    color: #fff; /* White text */
+    background-color: #007bff; /* Primary button color */
+    transition: all 0.3s ease-in-out;
+  }
+
+  .search-container button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3;
+  }
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff; /* White text */
+    font-size: 16px; /* Larger font size for visibility */
+    font-weight: 700; /* Bold for emphasis */
+    margin-left: 15px;
+  }
+
+  .user-info i {
+    color: #f8f9fa; /* Muted icon color */
+    font-size: 18px; /* Slightly larger icon */
+  }
+
+  .user-info .username {
+    color: #ffc107; /* Highlight username with a bright color */
+  }
+
+  .user-info:hover .username {
+    text-decoration: underline; /* Add an underline effect on hover */
+  }

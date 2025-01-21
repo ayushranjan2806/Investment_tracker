@@ -1,0 +1,54 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+<h1 id="branding">
+  <img src="{% static 'image/expenseseses.jpg' %}" alt="Logo" width="40" height="40">
+ Expenses tracker
+</h1>
+{% endblock %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/adminstyle.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="admin-dashboard">
+  <!-- Sidebar -->
+  <aside id="sidebar">
+    <nav>
+      <ul>
+        <li><a href="{% url 'admin:index' %}">Dashboard</a></li>
+        <li><a href="{% url 'admin:app_list' app_label='expensetracker' %}">Expenses</a></li>
+        <li><a href="{% url 'admin:app_list' app_label='income' %}">Income</a></li>
+        <li><a href="{% url 'admin:logout' %}">Log Out</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="content">
+    <div class="content-header">
+      <h2>Welcome, {{ request.user.username }}</h2>
+      <p>Manage your data efficiently from the admin panel.</p>
+    </div>
+
+    <section class="modules">
+      {% block modules %}
+      <div class="module">
+        <h3>Categories</h3>
+        <a href="{% url 'admin:expensetracker_category_changelist' %}" class="button">Manage Categories</a>
+      </div>
+      <div class="module">
+        <h3>Expenses</h3>
+        <a href="{% url 'admin:expensetracker_expense_changelist' %}" class="button">Manage Expenses</a>
+      </div>
+      <div class="module">
+        <h3>Income</h3>
+        <a href="{% url 'admin:income_source_changelist' %}" class="button">Manage Income</a>
+      </div>
+      {% endblock %}
+    </section>
+  </main>
+</div>
+{% endblock %}

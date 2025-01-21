@@ -1,0 +1,105 @@
+ /* Card Header Styling */
+.card-header {
+    background: linear-gradient(135deg, #ff6a00, #ee0979); /* Vibrant gradient */
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Soft shadow behind text */
+    padding: 30px 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    text-align: center;
+}
+
+.card-header:hover {
+    background: linear-gradient(135deg, #ff0979, #ff6a00); /* Reverse gradient on hover */
+    cursor: pointer;
+    transform: scale(1.05); /* Slight enlargement on hover */
+}
+
+/* Button Styling */
+.btn {
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow behind text */
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 12px 20px;
+    min-width: 140px; /* Uniform button width */
+    text-align: center;
+}
+
+/* Save Button Styling */
+.btn-primary {
+    background: linear-gradient(135deg, #ff6a00, #ee0979); /* Matching vibrant gradient */
+    border: none;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #ff0979, #ff6a00); /* Reverse gradient on hover */
+    transform: scale(1.05); /* Slight enlargement on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow when hovered */
+    cursor: pointer;
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Cancel Button Styling */
+.btn-cancel {
+    background: none;
+    border: 2px solid #6c757d;
+    color: #6c757d;
+    padding: 12px 20px;
+}
+
+.btn-cancel:hover {
+    background: #6c757d;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Delete Button Styling */
+.btn-delete {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+}
+
+.btn-delete:hover {
+    background: #b02a37;
+    transform: scale(1.05);
+}
+
+/* Adjust padding and font size for mobile responsiveness */
+@media (max-width: 768px) {
+    .btn {
+        font-size: 14px;
+        padding: 10px 18px;
+        min-width: 120px; /* Reduced width for smaller screens */
+    }
+
+    .d-flex.justify-content-center {
+        flex-wrap: wrap; /* Stack buttons on smaller screens */
+    }
+
+    .d-flex.justify-content-center .btn {
+        width: 100%; /* Full width for mobile */
+        margin-bottom: 10px;
+    }
+}
+

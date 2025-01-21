@@ -1,0 +1,59 @@
+/* Navbar Styling */
+.navbar {
+  background: #333; /* Dark gray background for strong contrast */
+  color: #f4a261; /* Orange for text and accents */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  color: #f4a261; /* Orange for branding */
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar h1 img {
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 2px solid #f4a261; /* Optional border around the logo */
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 20px; /* Even spacing between nav items */
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: #f4a261; /* Orange text */
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s, background-color 0.3s;
+  padding: 5px 15px;
+  border-radius: 5px;
+}
+
+.navbar .nav-links a:hover {
+  background: #f4a261; /* Orange background on hover */
+  color: #fff; /* White text on hover */
+}
+
+.navbar .user-info {
+  color: #fff; /* White text for user info */
+  background: #444; /* Darker gray for contrast */
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.navbar .user-info:hover {
+  background: #555; /* Slightly lighter gray on hover */
+}

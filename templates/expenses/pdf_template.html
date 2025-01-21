@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {width: 100%; border-collapse: collapse;}
+        th, td {border: 1px solid #ddd; padding: 8px;}
+        th {background-color: #f4f4f4; text-align: left;}
+    </style>
+</head>
+<body>
+    <h1>Expense Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense.amount }}</td>
+                <td>{{ expense.category }}</td>
+                <td>{{ expense.description }}</td>
+                <td>{{ expense.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
