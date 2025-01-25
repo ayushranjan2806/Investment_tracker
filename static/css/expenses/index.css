@@ -172,3 +172,249 @@
     margin-bottom: 20px;
 }
 
+/* General Button Styling */
+/* Base styles for export buttons */
+/* Base styles for export buttons */
+.btn-export {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 8px; /* Slightly more rounded corners for a modern look */
+  transition: all 0.3s ease;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid transparent; /* Border for focus state */
+  text-transform: uppercase; /* Makes button text more prominent */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hover effect */
+.btn-export:hover {
+  transform: translateY(-3px); /* Slight lift effect */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* CSV button style */
+.btn-export.csv {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: 2px solid #4CAF50;
+}
+
+.btn-export.csv:hover {
+  background-color: #45a049; /* Darker green */
+  border-color: #388e3c;
+}
+
+/* PDF button style */
+.btn-export.pdf {
+  background-color: #E64A19; /* Red */
+  color: white;
+  border: 2px solid #E64A19;
+}
+
+.btn-export.pdf:hover {
+  background-color: #D32F2F; /* Darker red */
+  border-color: #C62828;
+}
+
+/* Focus state */
+.btn-export:focus {
+  outline: none;
+  border-color: #1976D2; /* Blue outline for focus */
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3); /* Subtle focus halo */
+}
+
+/* Active state - Pressed effect */
+.btn-export:active {
+  transform: translateY(1px); /* Slight press down effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Lighter shadow when pressed */
+}
+
+/* Focus-visible for better accessibility */
+.btn-export:focus-visible {
+  outline: 3px solid #1976D2; /* More prominent outline for focus */
+}
+
+/* Extra small screen sizes (mobile-first design) */
+@media (max-width: 576px) {
+  .btn-export {
+    font-size: 14px;
+    padding: 10px 20px; /* Smaller padding on mobile */
+  }
+}
+.btn-action {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 10px; /* Rounder corners for a sleek look */
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: none; /* No border for cleaner look */
+    text-transform: uppercase; /* Makes button text more prominent */
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    margin-right: 10px; /* Add a gap between buttons */
+}
+
+/* Hover effect */
+.btn-action:hover {
+    transform: translateY(-4px); /* Slight lift effect */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+/* Export Button */
+.btn-action.export {
+    background-color: #007bff; /* Blue color */
+    color: white;
+}
+
+.btn-action.export:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-action.export:before {
+    content: '📤'; /* Export icon */
+    font-size: 18px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Import Button */
+.btn-action.import {
+    background-color: #007bff; /* Blue color */
+    color: white;
+}
+
+.btn-action.import:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-action.import:before {
+    content: '📥'; /* Import icon */
+    font-size: 18px;
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Focus state for both buttons */
+.btn-action:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3); /* Blue halo effect */
+}
+
+/* Active state - Pressed effect for both buttons */
+.btn-action:active {
+    transform: translateY(2px); /* Slight press down effect */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Light shadow when pressed */
+}
+
+/* Focus-visible for better accessibility */
+.btn-action:focus-visible {
+    outline: 3px solid #1976D2; /* Prominent blue outline on focus */
+}
+
+/* Extra small screen sizes (mobile-first design) */
+@media (max-width: 576px) {
+    .btn-action {
+        font-size: 14px;
+        padding: 10px 20px; /* Smaller padding on mobile */
+        width: 100%; /* Full width on mobile */
+        margin-top: 10px;
+    }
+}
+    /* General Button Styling for Export and Import */
+    .btn-action {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 12px 28px;
+        border-radius: 10px; /* Rounder corners for a sleek look */
+        transition: all 0.3s ease;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border: none; /* No border for cleaner look */
+        text-transform: uppercase; /* Makes button text more prominent */
+        position: relative;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+        margin-right: 10px; /* Add a gap between buttons */
+    }
+
+    /* Hover effect */
+    .btn-action:hover {
+        transform: translateY(-4px); /* Slight lift effect */
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    }
+
+    /* Export Button */
+    .btn-action.export {
+        background-color: #007bff; /* Blue color */
+        color: white;
+    }
+
+    .btn-action.export:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .btn-action.export:before {
+        content: '📤'; /* Export icon */
+        font-size: 18px;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Import Button */
+    .btn-action.import {
+        background-color: #007bff; /* Blue color */
+        color: white;
+    }
+
+    .btn-action.import:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+    .btn-action.import:before {
+        content: '📥'; /* Import icon */
+        font-size: 18px;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Focus state for both buttons */
+    .btn-action:focus {
+        outline: none;
+        border: none;
+        box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.3); /* Blue halo effect */
+    }
+
+    /* Active state - Pressed effect for both buttons */
+    .btn-action:active {
+        transform: translateY(2px); /* Slight press down effect */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Light shadow when pressed */
+    }
+
+    /* Focus-visible for better accessibility */
+    .btn-action:focus-visible {
+        outline: 3px solid #1976D2; /* Prominent blue outline on focus */
+    }
+
+    /* Extra small screen sizes (mobile-first design) */
+    @media (max-width: 576px) {
+        .btn-action {
+            font-size: 14px;
+            padding: 10px 20px; /* Smaller padding on mobile */
+            width: 100%; /* Full width on mobile */
+            margin-top: 10px;
+

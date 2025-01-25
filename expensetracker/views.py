@@ -8,28 +8,21 @@ from expensetracker.models import Category
 from django.core.paginator import Paginator
 import json
 from django.http import JsonResponse
-import csv
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from io import BytesIO
 from .models import Expense
 import csv
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from io import BytesIO
-
-
 from .models import Expense
-
-
-
 import json
 from datetime import datetime, timedelta
-from django.http import JsonResponse
-from .models import Expense
-
+from django.db.models import Sum
+from xhtml2pdf import pisa
+from django.template.loader import get_template
 
 def SearchExpenses(request):
     if request.method == "POST":
@@ -226,6 +219,39 @@ def export_csv(request):
     writer.writerow(['Amount', 'Category', 'Description', 'Date'])
     for expense in expenses:
         writer.writerow([expense.amount, expense.category, expense.description, expense.date])
+    return response
+
+# Export to PDF
+def export_pdf(request):
+    expenses = Expense.objects.filter(owner=request.user)
+    currency = UserPreference.objects.get(user=request.user).currency
+
+    # Calculate the total expense amount
+    total_expense = sum(expense.amount for expense in expenses)
+
+    template_path = 'expenses/pdf_template.html'
+
+    # Preparing context for the PDF template
+    context = {
+
+        'expenses': expenses,
+        'currency': currency,
+        'total_expense': total_expense,
+        'now': datetime.now(),
+    }
+
+    # Render the HTML template to a string
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # Generate PDF using xhtml2pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="expenses.pdf"'
+    pisa_status = pisa.CreatePDF(BytesIO(html.encode('UTF-8')), dest=response, encoding='UTF-8')
+
+    if pisa_status.err:
+        return HttpResponse('We had some errors generating your PDF.')
+
     return response
 
 
