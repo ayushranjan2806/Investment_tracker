@@ -13,6 +13,11 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from datetime import datetime
 from .models import Income
+from django.http import HttpResponse
+from xhtml2pdf import pisa
+from django.template.loader import get_template
+from io import BytesIO
+import csv
 
 # Allow AJAX requests without CSRF token (only for development; handle CSRF properly in production)
 
@@ -220,3 +225,47 @@ def income_source_summary(request):
 
 def stats_view_income(request):
     return render(request,'income/stats_income.html')
+
+# Export to CSV
+def export_csv(request):
+    expenses = Income.objects.all()
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=income.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Amount', 'source', 'Description', 'Date'])
+    for expense in expenses:
+        writer.writerow([expense.amount, expense.source, expense.description, expense.date])
+    return response
+
+#Export to PDF
+def export_pdf(request):
+    income = Income.objects.filter(owner=request.user)
+    currency = UserPreference.objects.get(user=request.user).currency
+
+    # Calculate the total expense amount
+    total_income = sum(expense.amount for expense in income)
+
+    template_path = 'income/pdf_template_income.html'
+
+    # Preparing context for the PDF template
+    context = {
+
+        'income': income,
+        'currency': currency,
+        'total_income': total_income,
+        'now': datetime.now(),
+    }
+
+    # Render the HTML template to a string
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # Generate PDF using xhtml2pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="income.pdf"'
+    pisa_status = pisa.CreatePDF(BytesIO(html.encode('UTF-8')), dest=response, encoding='UTF-8')
+
+    if pisa_status.err:
+        return HttpResponse('We had some errors generating your PDF.')
+
+    return response
