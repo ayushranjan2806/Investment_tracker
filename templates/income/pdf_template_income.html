@@ -13,7 +13,7 @@
         }
         h1 {
             text-align: center;
-            color: #007BFF;
+            color:rgb(156, 193, 232);
         }
         table {
             width: 100%;
@@ -61,7 +61,7 @@
     <table>
         <thead>
             <tr>
-                <th>Amount ({{ currency }})</th>
+                <th>Amount- ({{ currency }})</th>
                 <th>Source</th>
                 <th>Description</th>
                 <th>Date</th>
@@ -78,7 +78,6 @@
             {% endfor %}
         </tbody>
     </table>
-
     <div class="footer">
         <p class="total-expense">Total Expense: {{ total_income }} {{ currency }}</p>
         <p class="generated-date">Generated on: {{ now|date:"Y-m-d H:i:s" }}</p>
